@@ -1,4 +1,6 @@
 class SessionController < ApplicationController
+  before_filter :login_required, only: :destroy
+
   def new
   end
 
@@ -8,7 +10,7 @@ class SessionController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # User exists and password is correct => login
       log_in user
-      redirect_to user
+      redirect_to root_url
     else
       # A problem happened , print errors
       flash[:error] = "Authentication error"
@@ -19,6 +21,6 @@ class SessionController < ApplicationController
   # Destroys the session (logs the user out)
   def destroy
     log_out
-    redirect_to '/'
+    redirect_to root_url
   end
 end

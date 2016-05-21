@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :login_required, except: [:index, :show_posts]
 
   # GET /users
   # GET /users.json
