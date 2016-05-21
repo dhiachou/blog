@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :users
 
   # Login , register and logout urls :
-  get  'register' => 'users#create'
+  get  'register' => 'users#new'
   get  'login'    => 'session#new'
   post 'login'    => 'session#create'
   get  'logout'   => 'session#destroy'

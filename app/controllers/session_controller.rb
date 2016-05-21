@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     user = User.find_by(name: params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       # User exists and password is correct => login
-      login_user user
+      log_in user
       redirect_to user
     else
       # A problem happened , print errors
