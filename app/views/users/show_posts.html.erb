@@ -4,7 +4,7 @@
 
     <% @user.posts.each do |post| %>
       <p> <b> <%=post.user.name%></b> at <%=post.created_at %> </p>
-        <p><%= post.text %></p>
+        <p><%= sanitize post.text %></p> <%# Never trust user input %>
         <br/>
     <% end %>
 
