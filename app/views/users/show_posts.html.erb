@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Posts of <%= @user.name %></h1>
+
+    <% @user.posts.each do |post| %>
+      <p> <b> <%=post.user.name%></b> at <%=post.created_at %> </p>
+        <p><%= post.text %></p>
+        <br/>
+    <% end %>
+
+<br>

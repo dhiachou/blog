@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  resources :users
+  
+  resources :users 
+  resources :posts,  only: [:create, :destroy]
 
   # Login , register and logout urls :
   get  'register' => 'users#new'
   get  'login'    => 'session#new'
   post 'login'    => 'session#create'
   get  'logout'   => 'session#destroy'
+
+  # Show the posts
+  get 'app/:user/posts' => 'users#show_posts', as: :show_posts
 
   # Root page will be the listing of all users
   root 'users#index'

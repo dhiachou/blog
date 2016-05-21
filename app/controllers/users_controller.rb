@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @post  = current_user.posts.build if logged_in?
     @users = User.all
   end
 
@@ -59,6 +60,11 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # Shows a list of all posts
+  def show_posts
+    @user = User.find_by(name: params[:user])
   end
 
   private
